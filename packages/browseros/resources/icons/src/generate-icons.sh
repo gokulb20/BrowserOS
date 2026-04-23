@@ -12,6 +12,7 @@ HERE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 ICONS="$(cd "$HERE/.." && pwd)"
 BEAR="$HERE/crewm8-bear.svg"
 LOGO="$HERE/crewm8-logo.svg"
+LOGO_PNG="$HERE/crewm8-logo-bear.png"
 TMP="$(mktemp -d)"
 trap 'rm -rf "$TMP"' EXIT
 
@@ -22,21 +23,20 @@ square_bear() {
   magick -size "${size}x${size}" canvas:black "$TMP/bear_${size}.png" -gravity center -composite "$out"
 }
 
-# macOS icon: full-canvas black rounded square with Apple's standard
-# 18% corner radius (matches BrowserOS/Chrome/Brave/Safari exactly).
-# Bear is ~80% of canvas so the eye stops on the bear rather than
-# the icon edges, minimizing the visual weight of macOS Sequoia's
-# app-tile treatment. The 4 transparent corners sit precisely where
-# macOS's tile mask would clip anyway, so there's no shape mismatch.
+# macOS icon: use crewm8-logo-bear.png (user-provided landscape PNG with
+# solid black background edge-to-edge) as the source. Pad the landscape
+# PNG to a square with black on the top/bottom (or left/right) so every
+# pixel of the resulting icon is opaque black where the bear isn't.
+# No transparency anywhere => macOS cannot fill it with a tile background.
+# No rounded corners => exact edge-to-edge match to the reference image.
 macos_icon() {
   local out=$1 size=$2
-  local radius=$(( size * 18 / 100 ))
-  local bear=$(( size * 80 / 100 ))
-  rsvg-convert "$BEAR" -w "$bear" -h "$bear" --keep-aspect-ratio -o "$TMP/bear_m${size}.png"
-  magick -size "${size}x${size}" xc:none \
-    -fill black \
-    -draw "roundRectangle 0,0 $((size-1)),$((size-1)) $radius,$radius" \
-    "$TMP/bear_m${size}.png" -gravity center -composite \
+  magick "$LOGO_PNG" \
+    -resize "${size}x${size}" \
+    -background black \
+    -gravity center \
+    -extent "${size}x${size}" \
+    -alpha off \
     "$out"
 }
 
