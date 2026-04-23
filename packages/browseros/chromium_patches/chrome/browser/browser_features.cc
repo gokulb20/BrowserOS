@@ -6,12 +6,16 @@ index 875b4d0c538c5..00d5084d2e168 100644
  // crbug.com/413259638 for more details of Bookmark triggered prefetching.
  BASE_FEATURE(kBookmarkTriggerForPrefetch, base::FEATURE_DISABLED_BY_DEFAULT);
  
-+// Enables BrowserOS alpha features.
++// Crewm8: rebrand/quieting — upstream-portable: no
++// Enables Crewm8 alpha features.
 +BASE_FEATURE(kBrowserOsAlphaFeatures, base::FEATURE_DISABLED_BY_DEFAULT);
 +
-+// Enables BrowserOS keyboard shortcuts (Option+K, Option+L, Option+A, etc.).
-+// Disable this on keyboards where Option+letter produces special characters.
-+BASE_FEATURE(kBrowserOsKeyboardShortcuts, base::FEATURE_ENABLED_BY_DEFAULT);
++// Crewm8: rebrand/quieting — upstream-portable: no
++// Enables Crewm8 keyboard shortcuts (Option+K, Option+L, Option+A, etc.).
++// Default flipped to DISABLED so fresh installs don't override native
++// macOS Option+letter special-character entry. Users can enable in
++// chrome://flags.
++BASE_FEATURE(kBrowserOsKeyboardShortcuts, base::FEATURE_DISABLED_BY_DEFAULT);
 +
  // Enables Certificate Transparency on Desktop and Android Browser (CT is
  // disabled in Android Webview, see aw_browser_context.cc).

@@ -7,9 +7,11 @@ index ac91059612483..7286dfcca9365 100644
  #include "components/version_info/channel.h"
  
 +namespace {
-+constexpr char kSentryMinidumpUrl[] =
-+    "https://o4510545525932032.ingest.us.sentry.io/api/4510938172620800/"
-+    "minidump/?sentry_key=9a76046fcfbcfe69a3580f4d204579f1";
++// Crewm8: rebrand/quieting — upstream-portable: no
++// BrowserOS points this at its own Sentry project. Crewm8 stubs it to
++// empty string so crashes upload nowhere by default. When Crewm8 has
++// its own crash-reporting endpoint, populate this constant.
++constexpr char kSentryMinidumpUrl[] = "";
 +}  // namespace
 +
  ChromeCrashReporterClient::ChromeCrashReporterClient() = default;
