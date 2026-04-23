@@ -1,23 +1,32 @@
 import { motion } from 'motion/react'
 import type { FC } from 'react'
-import ProductLogoSvg from '@/assets/product_logo.svg'
+import WordmarkSvg from '@/assets/crewm8-wordmark.svg'
 
 export const NewTabBranding: FC = () => {
   return (
-    <div className="space-y-4 text-center">
-      <div className="mb-2 flex items-center justify-center gap-3">
-        <motion.div
-          layoutId="new-tab-branding"
-          transition={{
-            type: 'keyframes',
-            damping: 20,
-            stiffness: 300,
+    <div className="space-y-3 text-center">
+      <motion.div
+        layoutId="new-tab-branding"
+        transition={{ type: 'keyframes', damping: 20, stiffness: 300 }}
+        className="flex items-center justify-center"
+      >
+        <div
+          className="h-16 w-64 bg-foreground"
+          style={{
+            WebkitMaskImage: `url(${WordmarkSvg})`,
+            WebkitMaskRepeat: 'no-repeat',
+            WebkitMaskPosition: 'center',
+            WebkitMaskSize: 'contain',
+            maskImage: `url(${WordmarkSvg})`,
+            maskRepeat: 'no-repeat',
+            maskPosition: 'center',
+            maskSize: 'contain',
           }}
-          className="flex h-20 w-20 items-center justify-center rounded-xl bg-transparent"
-        >
-          <img src={ProductLogoSvg} alt="crewm8" className="h-20 w-20" />
-        </motion.div>
-      </div>
+          role="img"
+          aria-label="Crewm8"
+        />
+      </motion.div>
+      <p className="text-muted-foreground text-sm">Welcome to Crewm8</p>
     </div>
   )
 }
