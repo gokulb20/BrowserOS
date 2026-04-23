@@ -8,14 +8,14 @@ index d73e9a053eb63..5174931bde25d 100644
  
 +// BrowserOS: feature flags
 +inline constexpr char kBrowserOsAlphaFeaturesName[] =
-+    "BrowserOS Alpha Features";
++    "Crewm8 Alpha Features";
 +inline constexpr char kBrowserOsAlphaFeaturesDescription[] =
-+    "Enables BrowserOS alpha features.";
++    "Enables Crewm8 alpha features.";
 +
 +inline constexpr char kBrowserOsKeyboardShortcutsName[] =
-+    "BrowserOS Keyboard Shortcuts";
++    "Crewm8 Keyboard Shortcuts";
 +inline constexpr char kBrowserOsKeyboardShortcutsDescription[] =
-+    "Enables BrowserOS keyboard shortcuts (Cmd+Shift+K, Cmd+Shift+L, "
++    "Enables Crewm8 keyboard shortcuts (Cmd+Shift+K, Cmd+Shift+L, "
 +    "Option+A). Disable if these conflict with your keyboard layout.";
 +
  inline constexpr char kBrowsingHistoryActorIntegrationM1Name[] =
