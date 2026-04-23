@@ -22,6 +22,23 @@ square_bear() {
   magick -size "${size}x${size}" canvas:black "$TMP/bear_${size}.png" -gravity center -composite "$out"
 }
 
+# macOS-style squircle icon: transparent canvas, rounded black square inset
+# to ~82% of the canvas, bear centered inside. Matches Big Sur+ rendering so
+# macOS doesn't add its "bare square" outline treatment in Finder/dock.
+macos_icon() {
+  local out=$1 size=$2
+  local inset=$(( size * 9 / 100 ))          # 9% outer margin
+  local radius=$(( size * 22 / 100 ))        # 22% corner radius (squircle approx)
+  local body=$(( size - 2 * inset ))
+  local bear=$(( body * 60 / 100 ))
+  rsvg-convert "$BEAR" -w "$bear" -h "$bear" --keep-aspect-ratio -o "$TMP/bear_m${size}.png"
+  magick -size "${size}x${size}" xc:none \
+    -fill black \
+    -draw "roundRectangle $inset,$inset $((size-inset)),$((size-inset)) $radius,$radius" \
+    "$TMP/bear_m${size}.png" -gravity center -composite \
+    "$out"
+}
+
 wordmark_black_bg() {
   local out=$1 height=$2
   local width=$(( height * 786 / 229 ))
@@ -78,19 +95,19 @@ square_bear "$ICONS/chromeos/crosh_app_icon_256.png" 256
 square_bear "$ICONS/chromeos/webstore_app_icon_16.png" 16
 square_bear "$ICONS/chromeos/webstore_app_icon_128.png" 128
 
-echo "macOS .icns"
+echo "macOS .icns (squircle shape with transparent padding)"
 ICONSET="$TMP/crewm8.iconset"
 mkdir -p "$ICONSET"
-square_bear "$ICONSET/icon_16x16.png" 16
-square_bear "$ICONSET/icon_16x16@2x.png" 32
-square_bear "$ICONSET/icon_32x32.png" 32
-square_bear "$ICONSET/icon_32x32@2x.png" 64
-square_bear "$ICONSET/icon_128x128.png" 128
-square_bear "$ICONSET/icon_128x128@2x.png" 256
-square_bear "$ICONSET/icon_256x256.png" 256
-square_bear "$ICONSET/icon_256x256@2x.png" 512
-square_bear "$ICONSET/icon_512x512.png" 512
-square_bear "$ICONSET/icon_512x512@2x.png" 1024
+macos_icon "$ICONSET/icon_16x16.png" 16
+macos_icon "$ICONSET/icon_16x16@2x.png" 32
+macos_icon "$ICONSET/icon_32x32.png" 32
+macos_icon "$ICONSET/icon_32x32@2x.png" 64
+macos_icon "$ICONSET/icon_128x128.png" 128
+macos_icon "$ICONSET/icon_128x128@2x.png" 256
+macos_icon "$ICONSET/icon_256x256.png" 256
+macos_icon "$ICONSET/icon_256x256@2x.png" 512
+macos_icon "$ICONSET/icon_512x512.png" 512
+macos_icon "$ICONSET/icon_512x512@2x.png" 1024
 iconutil -c icns -o "$ICONS/mac/app.icns" "$ICONSET"
 cp "$ICONS/mac/app.icns" "$ICONS/mac/AppIcon.icns"
 
