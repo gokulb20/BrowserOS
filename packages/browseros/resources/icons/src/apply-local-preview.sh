@@ -36,21 +36,24 @@ rm -rf "$DST_APP"
 echo "Copying BrowserOS.app to Crewm8.app"
 cp -R "$SRC_APP" "$DST_APP"
 
-echo "Swapping app icon"
+echo "Swapping app icon (legacy path, always installed)"
 cp "$ICONS/mac/app.icns" "$DST_APP/Contents/Resources/app.icns"
 
-echo "Removing Assets.car (compiled asset catalog takes precedence over app.icns;"
-echo "without xcodebuild we can't regenerate it, so we remove it to force the"
-echo "fallback to our app.icns)"
-rm -f "$DST_APP/Contents/Resources/Assets.car"
+echo "Installing Assets.car (Tahoe path — macOS 26 prefers this)"
+cp "$ICONS/mac/Assets.car" "$DST_APP/Contents/Resources/Assets.car"
 
-echo "Editing Info.plist (CFBundleName, DisplayName, Identifier)"
+echo "Editing Info.plist (CFBundleName, DisplayName, Identifier, IconName)"
 PLIST="$DST_APP/Contents/Info.plist"
 /usr/libexec/PlistBuddy -c "Set :CFBundleName Crewm8" "$PLIST" || \
   /usr/libexec/PlistBuddy -c "Add :CFBundleName string Crewm8" "$PLIST"
 /usr/libexec/PlistBuddy -c "Set :CFBundleDisplayName Crewm8" "$PLIST" 2>/dev/null || \
   /usr/libexec/PlistBuddy -c "Add :CFBundleDisplayName string Crewm8" "$PLIST"
 /usr/libexec/PlistBuddy -c "Set :CFBundleIdentifier ai.crewm8.Crewm8" "$PLIST"
+# CFBundleIconName tells macOS Tahoe to read the AppIcon asset from
+# Assets.car as the authoritative icon instead of falling back to
+# drawing a default app-tile behind app.icns.
+/usr/libexec/PlistBuddy -c "Set :CFBundleIconName AppIcon" "$PLIST" 2>/dev/null || \
+  /usr/libexec/PlistBuddy -c "Add :CFBundleIconName string AppIcon" "$PLIST"
 
 echo "Removing extended attributes (stale signatures, quarantine)"
 xattr -cr "$DST_APP"
@@ -62,7 +65,8 @@ echo "Touching bundle to prompt Finder/Dock icon refresh"
 touch "$DST_APP"
 
 echo "Clearing icon services cache"
-killall -9 IconServicesAgent 2>/dev/null || true
+sudo rm -rf /Library/Caches/com.apple.iconservices.store 2>/dev/null || true
+killall -9 IconServicesAgent cfprefsd 2>/dev/null || true
 killall -9 Finder Dock 2>/dev/null || true
 
 cat <<EOF

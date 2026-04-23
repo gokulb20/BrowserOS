@@ -23,17 +23,23 @@ square_bear() {
   magick -size "${size}x${size}" canvas:black "$TMP/bear_${size}.png" -gravity center -composite "$out"
 }
 
-# macOS icon: use crewm8-logo-bear.png (user-provided landscape PNG with
-# solid black background edge-to-edge) as the source. Pad the landscape
-# PNG to a square with black on the top/bottom (or left/right) so every
-# pixel of the resulting icon is opaque black where the bear isn't.
-# No transparency anywhere => macOS cannot fill it with a tile background.
-# No rounded corners => exact edge-to-edge match to the reference image.
+# macOS icon: zoom in on the bear so it fills the icon canvas. Per user
+# direction, cropping left/right edges is acceptable since the source
+# image has substantial black padding around the bear anyway.
+#
+# Pipeline:
+#   1. -trim: strip surrounding black so we're working with just the
+#      bear's bounding box.
+#   2. +repage: reset virtual canvas so subsequent ops work from 0,0.
+#   3. -resize ${size}x${size}^: scale so the SHORTER dimension matches
+#      target (^ = fill-minimum); larger dim overflows.
+#   4. -gravity center -extent: center-crop to exact target square.
+#   5. -alpha off: guarantee every pixel is fully opaque.
 macos_icon() {
   local out=$1 size=$2
   magick "$LOGO_PNG" \
-    -resize "${size}x${size}" \
-    -background black \
+    -trim +repage \
+    -resize "${size}x${size}^" \
     -gravity center \
     -extent "${size}x${size}" \
     -alpha off \
@@ -122,5 +128,62 @@ magick \
   "$ICONS/product_logo_128.png" \
   "$ICONS/product_logo_256.png" \
   "$ICONS/win/chromium.ico"
+
+# macOS Assets.car — the canonical Sequoia app-icon format. Without this,
+# macOS draws a fallback "app tile" background behind app.icns, which
+# renders as a visible gray frame around our black square. With a proper
+# compiled Assets.car referencing an AppIcon asset, macOS treats the
+# icon as authoritative and draws nothing behind it.
+echo "macOS Assets.car (via xcrun actool)"
+XCASSETS="$TMP/crewm8-icons.xcassets"
+ICONSET_DIR="$XCASSETS/AppIcon.appiconset"
+mkdir -p "$ICONSET_DIR"
+
+macos_icon "$ICONSET_DIR/icon_16.png"   16
+macos_icon "$ICONSET_DIR/icon_32.png"   32
+macos_icon "$ICONSET_DIR/icon_64.png"   64
+macos_icon "$ICONSET_DIR/icon_128.png"  128
+macos_icon "$ICONSET_DIR/icon_256.png"  256
+macos_icon "$ICONSET_DIR/icon_512.png"  512
+macos_icon "$ICONSET_DIR/icon_1024.png" 1024
+
+cat > "$ICONSET_DIR/Contents.json" <<'JSON'
+{
+  "images" : [
+    {"idiom":"mac","scale":"1x","size":"16x16","filename":"icon_16.png"},
+    {"idiom":"mac","scale":"2x","size":"16x16","filename":"icon_32.png"},
+    {"idiom":"mac","scale":"1x","size":"32x32","filename":"icon_32.png"},
+    {"idiom":"mac","scale":"2x","size":"32x32","filename":"icon_64.png"},
+    {"idiom":"mac","scale":"1x","size":"128x128","filename":"icon_128.png"},
+    {"idiom":"mac","scale":"2x","size":"128x128","filename":"icon_256.png"},
+    {"idiom":"mac","scale":"1x","size":"256x256","filename":"icon_256.png"},
+    {"idiom":"mac","scale":"2x","size":"256x256","filename":"icon_512.png"},
+    {"idiom":"mac","scale":"1x","size":"512x512","filename":"icon_512.png"},
+    {"idiom":"mac","scale":"2x","size":"512x512","filename":"icon_1024.png"}
+  ],
+  "info" : {"author":"xcode","version":1}
+}
+JSON
+
+cat > "$XCASSETS/Contents.json" <<'JSON'
+{"info":{"author":"xcode","version":1}}
+JSON
+
+COMPILED="$TMP/compiled"
+mkdir -p "$COMPILED"
+xcrun actool --compile "$COMPILED" \
+  --platform macosx \
+  --minimum-deployment-target 11.0 \
+  --app-icon AppIcon \
+  --include-all-app-icons \
+  --output-partial-info-plist "$COMPILED/AppIcon-partial.plist" \
+  "$XCASSETS" 2>&1 | tail -3
+
+if [[ -f "$COMPILED/Assets.car" ]]; then
+  cp "$COMPILED/Assets.car" "$ICONS/mac/Assets.car"
+  echo "  -> $ICONS/mac/Assets.car ($(stat -f %z "$ICONS/mac/Assets.car") bytes)"
+else
+  echo "  WARN: actool did not produce Assets.car"
+fi
 
 echo "Done."
