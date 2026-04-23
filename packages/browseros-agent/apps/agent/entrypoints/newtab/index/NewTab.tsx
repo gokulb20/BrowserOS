@@ -168,7 +168,7 @@ export const NewTab = () => {
     query: inputValue,
     selectedTabs,
   })
-  const searchPlaceholder = `Ask crewm8 or search ${providerConfig.name}...`
+  const searchPlaceholder = `Talk to Crewm8...`
   const supportsInlineChat =
     alphaEnabled && supports(Feature.NEWTAB_CHAT_SUPPORT)
 
