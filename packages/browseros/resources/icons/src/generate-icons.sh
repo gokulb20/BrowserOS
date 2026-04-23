@@ -22,17 +22,21 @@ square_bear() {
   magick -size "${size}x${size}" canvas:black "$TMP/bear_${size}.png" -gravity center -composite "$out"
 }
 
-# macOS icon: pure-black full-canvas square, no rounded corners. All
-# pixels are fully opaque black, so there is no transparent region for
-# the dock's translucent background to bleed through as a light rim.
-# Bear centered at ~65% of canvas.
+# macOS icon: full-canvas black rounded square with Apple's standard
+# 18% corner radius (matches BrowserOS/Chrome/Brave/Safari exactly).
+# Bear is ~80% of canvas so the eye stops on the bear rather than
+# the icon edges, minimizing the visual weight of macOS Sequoia's
+# app-tile treatment. The 4 transparent corners sit precisely where
+# macOS's tile mask would clip anyway, so there's no shape mismatch.
 macos_icon() {
   local out=$1 size=$2
-  local bear=$(( size * 65 / 100 ))
+  local radius=$(( size * 18 / 100 ))
+  local bear=$(( size * 80 / 100 ))
   rsvg-convert "$BEAR" -w "$bear" -h "$bear" --keep-aspect-ratio -o "$TMP/bear_m${size}.png"
-  magick -size "${size}x${size}" canvas:black \
+  magick -size "${size}x${size}" xc:none \
+    -fill black \
+    -draw "roundRectangle 0,0 $((size-1)),$((size-1)) $radius,$radius" \
     "$TMP/bear_m${size}.png" -gravity center -composite \
-    -alpha off \
     "$out"
 }
 
