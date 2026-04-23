@@ -171,11 +171,11 @@ function htmlResponse(html: string): Response {
 
 function successPage(): string {
   return `<!DOCTYPE html>
-<html><head><title>BrowserOS - Authentication Successful</title>
+<html><head><title>Crewm8 - Authentication Successful</title>
 <style>body{font-family:system-ui;display:flex;align-items:center;justify-content:center;height:100vh;margin:0;background:#f8f9fa}
 .card{text-align:center;padding:2rem;background:white;border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,0.1)}
 h1{color:#22c55e;font-size:1.5rem}p{color:#6b7280}</style></head>
-<body><div class="card"><h1>Authentication Successful</h1><p>You can close this tab and return to BrowserOS.</p></div></body></html>`
+<body><div class="card"><h1>Authentication Successful</h1><p>You can close this tab and return to Crewm8.</p></div></body></html>`
 }
 
 function errorPage(message: string): string {
@@ -184,7 +184,7 @@ function errorPage(message: string): string {
     .replace(/</g, '&lt;')
     .replace(/>/g, '&gt;')
   return `<!DOCTYPE html>
-<html><head><title>BrowserOS - Authentication Failed</title>
+<html><head><title>Crewm8 - Authentication Failed</title>
 <style>body{font-family:system-ui;display:flex;align-items:center;justify-content:center;height:100vh;margin:0;background:#f8f9fa}
 .card{text-align:center;padding:2rem;background:white;border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,0.1)}
 h1{color:#ef4444;font-size:1.5rem}p{color:#6b7280}</style></head>

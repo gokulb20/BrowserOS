@@ -77,7 +77,7 @@ index 977849483f5b8..06699914cd23c 100644
 +              infobars::InfoBarDelegate::
 +                  BROWSEROS_AGENT_INSTALLING_INFOBAR_DELEGATE,
 +              nullptr,
-+              u"BrowserOS Agent is installing/updating. Please try again shortly.",
++              u"Crewm8 Agent is installing/updating. Please try again shortly.",
 +              /*auto_expire=*/true,
 +              /*should_animate=*/true,
 +              /*closeable=*/true);

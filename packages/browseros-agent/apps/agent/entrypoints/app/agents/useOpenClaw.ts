@@ -160,7 +160,7 @@ export function useOpenClawMutations() {
 
   const ensureBaseUrl = () => {
     if (!baseUrl || urlLoading) {
-      throw new Error('BrowserOS agent server URL is not ready')
+      throw new Error('Crewm8 agent server URL is not ready')
     }
     return baseUrl
   }

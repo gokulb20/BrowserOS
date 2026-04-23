@@ -90,7 +90,7 @@ index 19d0181ac8285..5bc3edd1fff8e 100644
 +                        infobars::InfoBarDelegate::
 +                            BROWSEROS_AGENT_INSTALLING_INFOBAR_DELEGATE,
 +                        nullptr,
-+                        u"BrowserOS Agent is installing/updating. Please try again shortly.",
++                        u"Crewm8 Agent is installing/updating. Please try again shortly.",
 +                        /*auto_expire=*/true,
 +                        /*should_animate=*/true,
 +                        /*closeable=*/true);
@@ -125,7 +125,7 @@ index 19d0181ac8285..5bc3edd1fff8e 100644
 +              bwi))
 +          .SetActionId(kActionBrowserOSAgent)
 +          .SetText(u"Assistant")
-+          .SetTooltipText(u"Ask BrowserOS")
++          .SetTooltipText(u"Ask Crewm8")
 +          .SetImage(ui::ImageModel::FromResourceId(IDR_PRODUCT_LOGO_16))
 +          .SetProperty(actions::kActionItemPinnableKey,
 +                       std::underlying_type_t<actions::ActionPinnableState>(
