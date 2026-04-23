@@ -39,6 +39,11 @@ cp -R "$SRC_APP" "$DST_APP"
 echo "Swapping app icon"
 cp "$ICONS/mac/app.icns" "$DST_APP/Contents/Resources/app.icns"
 
+echo "Removing Assets.car (compiled asset catalog takes precedence over app.icns;"
+echo "without xcodebuild we can't regenerate it, so we remove it to force the"
+echo "fallback to our app.icns)"
+rm -f "$DST_APP/Contents/Resources/Assets.car"
+
 echo "Editing Info.plist (CFBundleName, DisplayName, Identifier)"
 PLIST="$DST_APP/Contents/Info.plist"
 /usr/libexec/PlistBuddy -c "Set :CFBundleName Crewm8" "$PLIST" || \
@@ -56,8 +61,9 @@ codesign --force --deep --sign - "$DST_APP" 2>&1 | tail -20
 echo "Touching bundle to prompt Finder/Dock icon refresh"
 touch "$DST_APP"
 
-echo "Clearing icon services cache (may prompt for keychain/admin)"
-killall Finder Dock 2>/dev/null || true
+echo "Clearing icon services cache"
+killall -9 IconServicesAgent 2>/dev/null || true
+killall -9 Finder Dock 2>/dev/null || true
 
 cat <<EOF
 
