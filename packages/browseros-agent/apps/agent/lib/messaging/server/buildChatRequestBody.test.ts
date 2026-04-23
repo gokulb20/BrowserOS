@@ -6,7 +6,7 @@ import { buildChatRequestBody } from './buildChatRequestBody'
 const provider: LlmProviderConfig = {
   id: 'browseros',
   type: 'browseros',
-  name: 'BrowserOS',
+  name: 'Crewm8',
   modelId: 'browseros-auto',
   supportsImages: true,
   contextWindow: 200000,
