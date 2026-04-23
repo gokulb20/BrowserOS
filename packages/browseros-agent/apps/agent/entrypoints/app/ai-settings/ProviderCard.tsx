@@ -82,7 +82,7 @@ export const ProviderCard: FC<ProviderCardProps> = ({
             <>
               crewm8-hosted model with strict rate limits.{' '}
               <a
-                href="https://docs.browseros.com/features/bring-your-own-llm"
+                href="https://docs.crewm8.ai/features/bring-your-own-llm"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="underline hover:text-foreground"

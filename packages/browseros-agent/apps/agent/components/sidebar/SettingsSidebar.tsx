@@ -104,7 +104,7 @@ const primarySettingsSections: NavSection[] = [
 ]
 
 const helpItems: NavItem[] = [
-  { name: 'Docs', href: 'https://docs.browseros.com/', icon: BookOpen },
+  { name: 'Docs', href: 'https://docs.crewm8.ai/', icon: BookOpen },
   { name: 'Features', to: '/onboarding/features', icon: Compass },
   { name: 'Revisit Onboarding', to: '/onboarding', icon: RotateCcw },
 ]

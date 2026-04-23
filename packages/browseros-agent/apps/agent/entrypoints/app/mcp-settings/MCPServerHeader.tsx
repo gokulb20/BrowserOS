@@ -20,7 +20,7 @@ interface MCPServerHeaderProps {
   onServerRestart?: () => void
 }
 
-const DOCS_URL = 'https://docs.browseros.com/features/use-with-claude-code'
+const DOCS_URL = 'https://docs.crewm8.ai/features/use-with-claude-code'
 const HEALTH_CHECK_TIMEOUT_MS = 60_000
 const HEALTH_CHECK_INTERVAL_MS = 2_000
 
