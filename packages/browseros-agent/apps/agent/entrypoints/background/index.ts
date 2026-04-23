@@ -1,6 +1,8 @@
 import { sessionStorage } from '@/lib/auth/sessionStorage'
+import { getBrowserOSAdapter } from '@/lib/browseros/adapter'
 import { Capabilities } from '@/lib/browseros/capabilities'
 import { getHealthCheckUrl, getMcpServerUrl } from '@/lib/browseros/helpers'
+import { BROWSEROS_PREFS } from '@/lib/browseros/prefs'
 import { openSidePanel, toggleSidePanel } from '@/lib/browseros/toggleSidePanel'
 import { checkAndShowChangelog } from '@/lib/changelog/changelog-notifier'
 import {
@@ -57,6 +59,14 @@ export default defineBackground(() => {
 
   chrome.runtime.onInstalled.addListener((details) => {
     if (details.reason === chrome.runtime.OnInstalledReason.INSTALL) {
+      // Crewm8: hide LLM Hub and Chat toolbar buttons by default.
+      // Chromium-level RegisterBooleanPref defaults them to true; we
+      // override via setPref on install so new Crewm8 users get a quiet
+      // regular-browser feel. Users can re-enable in Settings → Toolbar.
+      const adapter = getBrowserOSAdapter()
+      adapter.setPref(BROWSEROS_PREFS.SHOW_LLM_CHAT, false).catch(() => null)
+      adapter.setPref(BROWSEROS_PREFS.SHOW_LLM_HUB, false).catch(() => null)
+
       chrome.tabs.create({
         url: chrome.runtime.getURL('app.html#/onboarding'),
       })
