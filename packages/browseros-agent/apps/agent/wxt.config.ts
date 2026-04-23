@@ -21,8 +21,9 @@ export default defineConfig({
   manifest: {
     name: 'crewm8',
     key: 'MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAvBDAaDRvv61NpBeLR8etBRw82lv9VJO3sz/mA26gDzWKtVuzW4DXCl8Zfj5oWmoXLTfv3aiTigUXo/LHOoGpSucEVroMmAc7cgu2KuQ1fZPpMvYa0npD/m4h89360q8Oz0oKKaZGS905IJ04M2IkF4CuU3YEHFJBWb+cUyK9H8YVugelYbPD0IVs63T1SkGbh/t/Tfb2DpkinduSO8+x26sKydm30SRt+iZ2+7Nolcdum3LExInUiX2Pgb65Jb+mVw8NqyTVJyCEp8uq0cSHomWFQirSJ80tsDhISp4btwaRKHrXqovQx9XHQv4hCd+3LuB830eUEVMUNuCO+OyPxQIDAQAB',
-    update_url: 'https://cdn.browseros.com/extensions/update-manifest.xml',
-    // update_url: 'https://cdn.browseros.com/extensions/update-manifest.alpha.xml',
+    // Crewm8: auto-update disabled — removed update_url so the extension
+    // does not phone home to cdn.browseros.com. Re-add when Crewm8 has
+    // its own update manifest endpoint.
     externally_connectable: {
       matches: [`https://${apiPattern}/*`, `https://*.${apiPattern}/*`],
     },
