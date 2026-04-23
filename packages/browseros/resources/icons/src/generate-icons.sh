@@ -22,19 +22,19 @@ square_bear() {
   magick -size "${size}x${size}" canvas:black "$TMP/bear_${size}.png" -gravity center -composite "$out"
 }
 
-# macOS-style squircle icon: transparent canvas, rounded black square inset
-# to ~82% of the canvas, bear centered inside. Matches Big Sur+ rendering so
-# macOS doesn't add its "bare square" outline treatment in Finder/dock.
+# macOS icon: full-canvas rounded square (only the 4 corners are
+# transparent), bear centered at ~65% of canvas. Matches BrowserOS's
+# original icon geometry and Chrome/Brave/Safari — full-bleed icons
+# without transparent padding rings (macOS renders transparent padding
+# as a light container tile, which is not what we want).
 macos_icon() {
   local out=$1 size=$2
-  local inset=$(( size * 9 / 100 ))          # 9% outer margin
   local radius=$(( size * 22 / 100 ))        # 22% corner radius (squircle approx)
-  local body=$(( size - 2 * inset ))
-  local bear=$(( body * 60 / 100 ))
+  local bear=$(( size * 65 / 100 ))          # bear fills ~65% of canvas
   rsvg-convert "$BEAR" -w "$bear" -h "$bear" --keep-aspect-ratio -o "$TMP/bear_m${size}.png"
   magick -size "${size}x${size}" xc:none \
     -fill black \
-    -draw "roundRectangle $inset,$inset $((size-inset)),$((size-inset)) $radius,$radius" \
+    -draw "roundRectangle 0,0 $((size-1)),$((size-1)) $radius,$radius" \
     "$TMP/bear_m${size}.png" -gravity center -composite \
     "$out"
 }
