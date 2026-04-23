@@ -1,4 +1,3 @@
-import { sentryVitePlugin } from '@sentry/vite-plugin'
 import tailwindcss from '@tailwindcss/vite'
 import { defineConfig } from 'wxt'
 import { LEGACY_AGENT_EXTENSION_ID } from './lib/constants/legacyAgentExtensionId'
@@ -20,7 +19,7 @@ export default defineConfig({
   outDir: 'dist',
   modules: ['@wxt-dev/module-react'],
   manifest: {
-    name: 'Assistant',
+    name: 'crewm8',
     key: 'MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAvBDAaDRvv61NpBeLR8etBRw82lv9VJO3sz/mA26gDzWKtVuzW4DXCl8Zfj5oWmoXLTfv3aiTigUXo/LHOoGpSucEVroMmAc7cgu2KuQ1fZPpMvYa0npD/m4h89360q8Oz0oKKaZGS905IJ04M2IkF4CuU3YEHFJBWb+cUyK9H8YVugelYbPD0IVs63T1SkGbh/t/Tfb2DpkinduSO8+x26sKydm30SRt+iZ2+7Nolcdum3LExInUiX2Pgb65Jb+mVw8NqyTVJyCEp8uq0cSHomWFQirSJ80tsDhISp4btwaRKHrXqovQx9XHQv4hCd+3LuB830eUEVMUNuCO+OyPxQIDAQAB',
     update_url: 'https://cdn.browseros.com/extensions/update-manifest.xml',
     // update_url: 'https://cdn.browseros.com/extensions/update-manifest.alpha.xml',
@@ -51,7 +50,7 @@ export default defineConfig({
         48: 'icon/48.png',
         128: 'icon/128.png',
       },
-      default_title: 'Ask BrowserOS',
+      default_title: 'Ask crewm8',
     },
     permissions: [
       'topSites',
@@ -81,21 +80,6 @@ export default defineConfig({
     build: {
       sourcemap: 'hidden',
     },
-    plugins: [
-      tailwindcss(),
-      ...(env.SENTRY_AUTH_TOKEN
-        ? [
-            sentryVitePlugin({
-              org: env.SENTRY_ORG,
-              project: env.SENTRY_PROJECT,
-              authToken: env.SENTRY_AUTH_TOKEN,
-              sourcemaps: {
-                // Bug with sentry & WXT - refer: https://github.com/wxt-dev/wxt/issues/1735
-                // filesToDeleteAfterUpload: ['./dist/**/*.map'],
-              },
-            }),
-          ]
-        : []),
-    ],
+    plugins: [tailwindcss()],
   }),
 })

@@ -1,7 +1,7 @@
 {
   "name": "@browseros/server",
   "version": "0.0.88",
-  "description": "BrowserOS server",
+  "description": "crewm8 server",
   "type": "module",
   "main": "./src/index.ts",
   "bin": {
@@ -92,7 +92,6 @@
     "@hono/zod-validator": "^0.4.3",
     "@modelcontextprotocol/sdk": "^1.27.1",
     "@openrouter/ai-sdk-provider": "^2.2.3",
-    "@sentry/bun": "^10.31.0",
     "ai": "^6.0.94",
     "chrome-devtools-frontend": "^1.0.1577886",
     "commander": "^14.0.1",
@@ -105,7 +104,6 @@
     "jimp": "^1.6.0",
     "klavis": "^2.15.0",
     "pino": "^9.6.0",
-    "posthog-node": "^4.17.0",
     "puppeteer-core": "24.23.0",
     "ws": "^8.18.0",
     "zod": "^3.24.2",
