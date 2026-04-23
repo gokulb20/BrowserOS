@@ -1,12 +1,9 @@
 import {
-  ArrowDown,
   ArrowRight,
   BookOpenText,
   Bot,
-  Code2,
   FolderOpen,
   LinkIcon,
-  Plug,
   SplitSquareHorizontal,
 } from 'lucide-react'
 import { type FC, useEffect, useState } from 'react'
@@ -17,10 +14,7 @@ import { PillIndicator } from '@/components/elements/pill-indicator'
 import { Button } from '@/components/ui/button'
 import {
   AGENT_MODE_DEMO_URL,
-  AGENTIC_CODING_DEMO_URL,
-  BROWSER_OS_INTRO_VIDEO_URL,
   COWORK_DEMO_URL,
-  MCP_SERVER_DEMO_URL,
   SPLIT_VIEW_GIF_URL,
 } from '@/lib/constants/mediaUrls'
 import {
@@ -31,7 +25,6 @@ import {
 } from '@/lib/constants/productUrls'
 import { cn } from '@/lib/utils'
 import { BentoCard, type Feature } from './BentoCard'
-import { VideoFrame } from './VideoFrame'
 
 const features: Feature[] = [
   {
@@ -40,9 +33,9 @@ const features: Feature[] = [
     tag: 'AI AGENT',
     title: 'Built-in AI Agent',
     description:
-      'Describe any task and watch BrowserOS execute it—clicking, typing, and navigating for you.',
+      'Describe any task and watch crewm8 execute it—clicking, typing, and navigating for you.',
     detailedDescription:
-      'The BrowserOS Agent turns your words into browser actions. Describe what you need in plain English—fill out this form, extract data from that page, navigate through these steps—and the agent handles the rest. It clicks buttons, types text, navigates between pages, and completes multi-step browser tasks automatically. Everything runs locally on your machine with your own API keys, so your data stays private.',
+      'The crewm8 Agent turns your words into browser actions. Describe what you need in plain English—fill out this form, extract data from that page, navigate through these steps—and the agent handles the rest. It clicks buttons, types text, navigates between pages, and completes multi-step browser tasks automatically. Everything runs locally on your machine with your own API keys, so your data stays private.',
     highlights: [
       'Multi-tab execution — run agents in multiple tabs simultaneously',
       'Smart navigation — automatically finds and interacts with page elements',
@@ -53,25 +46,6 @@ const features: Feature[] = [
     videoDuration: '2:22',
     gridClass: 'md:col-span-2',
     videoUrl: AGENT_MODE_DEMO_URL,
-  },
-  {
-    id: 'mcp-server',
-    Icon: Plug,
-    tag: 'MCP',
-    title: 'BrowserOS as MCP Server',
-    description:
-      'Connect Claude Code, Gemini CLI, or any MCP client to control your browser with 31 tools.',
-    detailedDescription:
-      'BrowserOS includes a built-in MCP server that lets AI coding agents control your browser. Claude Code can open tabs, click elements, fill forms, take screenshots, and read page content—all through natural language commands. Unlike Chrome DevTools MCP which requires debug profiles and separate servers, BrowserOS works out of the box. Just copy the URL from settings and connect.',
-    highlights: [
-      'One-line setup — run `claude mcp add` with your server URL to connect',
-      '31 browser tools — tabs, clicks, typing, screenshots, bookmarks, history',
-      'Works everywhere — Claude Code, Gemini CLI, Codex, Claude Desktop',
-      'Authenticated access — extract data from logged-in pages like LinkedIn',
-    ],
-    videoDuration: '1:40',
-    gridClass: 'md:col-span-1',
-    videoUrl: MCP_SERVER_DEMO_URL,
   },
   {
     id: 'cowork',
@@ -108,24 +82,6 @@ const features: Feature[] = [
     ],
     gridClass: 'md:col-span-2',
     gifUrl: SPLIT_VIEW_GIF_URL,
-  },
-  {
-    id: 'agentic-coding',
-    Icon: Code2,
-    tag: 'DEV',
-    title: 'Agentic Coding',
-    description:
-      'Claude Code tests your web app, reads console errors, and fixes your code in one loop.',
-    detailedDescription:
-      'The killer workflow for frontend developers. Claude Code connects to BrowserOS, opens your localhost app, clicks through the UI, reads console errors and network failures, then goes back to your codebase to fix the bugs—all in one continuous loop. No more switching between terminal and browser. No more copy-pasting error messages. Just describe the issue and let the agent debug it end-to-end.',
-    highlights: [
-      'Test & fix loop — Claude navigates your app, finds bugs, and patches them',
-      'Console access — read browser console and network errors from your terminal',
-      'Screenshot debugging — Claude captures screenshots to understand visual issues',
-      'Rapid prototyping — build UIs faster with AI that sees your work',
-    ],
-    gridClass: 'md:col-span-1',
-    videoUrl: AGENTIC_CODING_DEMO_URL || undefined,
   },
 ]
 
@@ -174,7 +130,7 @@ export const FeaturesPage: FC = () => {
                 >
                   Why Switch to{' '}
                   <span className="text-[var(--accent-orange)]">
-                    BrowserOS?
+                    crewm8?
                   </span>
                 </h1>
                 <p
@@ -186,48 +142,10 @@ export const FeaturesPage: FC = () => {
                       : 'translate-y-4 opacity-0',
                   )}
                 >
-                  Watch our launch video to understand the vision of BrowserOS
-                  and key features!
+                  Scroll down to see what the agent can do.
                 </p>
               </div>
             </div>
-
-            {/* Centered Large Video */}
-            <VideoFrame
-              title="browseros.com/demo"
-              className={cn(
-                'transition-all delay-500 duration-700',
-                mounted
-                  ? 'translate-y-0 opacity-100'
-                  : 'translate-y-4 opacity-0',
-              )}
-            >
-              <video
-                className="h-full w-full"
-                src={BROWSER_OS_INTRO_VIDEO_URL}
-                title="BrowserOS MCP Server Demonstration"
-                autoPlay
-                muted
-                loop
-                playsInline
-                controls
-              />
-            </VideoFrame>
-          </div>
-        </div>
-
-        <div
-          className={cn(
-            'animation-duration-[3s] absolute bottom-0.5 left-1/2 flex -translate-x-1/2 animate-bounce flex-col items-center gap-3',
-            'transition-opacity delay-[2000ms] duration-700',
-            mounted ? 'opacity-100' : 'opacity-0',
-          )}
-        >
-          <div className="text-center">
-            <p className="mb-2 font-medium text-muted-foreground text-xs">
-              Scroll for Features
-            </p>
-            <ArrowDown className="mx-auto h-6 w-6 text-[var(--accent-orange)]" />
           </div>
         </div>
       </section>
@@ -275,7 +193,7 @@ export const FeaturesPage: FC = () => {
             <LinkIcon className="h-6 w-6 text-[var(--accent-orange)]" />
             <h2 className="font-bold text-3xl">
               Join our community and help us improve{' '}
-              <span className="text-[var(--accent-orange)]">BrowserOS!</span>
+              <span className="text-[var(--accent-orange)]">crewm8!</span>
             </h2>
           </div>
 
@@ -380,7 +298,7 @@ export const FeaturesPage: FC = () => {
             size="lg"
             className="bg-[var(--accent-orange)] text-white shadow-[var(--accent-orange)]/25 shadow-lg hover:bg-[var(--accent-orange)]/90"
           >
-            Start Using BrowserOS
+            Get started
             <ArrowRight className="ml-2 h-4 w-4" />
           </Button>
         </div>

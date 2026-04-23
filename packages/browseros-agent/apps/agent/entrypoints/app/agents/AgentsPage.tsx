@@ -75,34 +75,34 @@ const CONTROL_PLANE_COPY: Record<
     badgeLabel: 'Connecting',
     title: 'Connecting to Gateway',
     description:
-      'BrowserOS is establishing the OpenClaw control channel for agent operations.',
+      'crewm8 is establishing the OpenClaw control channel for agent operations.',
   },
   reconnecting: {
     badgeVariant: 'secondary',
     badgeLabel: 'Reconnecting',
     title: 'Reconnecting Control Plane',
     description:
-      'The gateway process is up, but BrowserOS is restoring the control channel.',
+      'The gateway process is up, but crewm8 is restoring the control channel.',
   },
   recovering: {
     badgeVariant: 'secondary',
     badgeLabel: 'Recovering',
     title: 'Recovering Gateway Connection',
     description:
-      'BrowserOS detected a control-plane fault and is trying a safe recovery path.',
+      'crewm8 detected a control-plane fault and is trying a safe recovery path.',
   },
   disconnected: {
     badgeVariant: 'outline',
     badgeLabel: 'Disconnected',
     title: 'Gateway Disconnected',
-    description: 'The gateway process is not available to BrowserOS right now.',
+    description: 'The gateway process is not available to crewm8 right now.',
   },
   failed: {
     badgeVariant: 'destructive',
     badgeLabel: 'Needs Attention',
     title: 'Gateway Recovery Failed',
     description:
-      'BrowserOS could not restore the OpenClaw control channel automatically.',
+      'crewm8 could not restore the OpenClaw control channel automatically.',
   },
 }
 
@@ -111,7 +111,7 @@ const FALLBACK_CONTROL_PLANE_COPY = {
   badgeLabel: 'Unknown',
   title: 'Gateway State Unknown',
   description:
-    'BrowserOS received a gateway status it does not recognize yet. Refreshing or reconnecting should restore a known state.',
+    'crewm8 received a gateway status it does not recognize yet. Refreshing or reconnecting should restore a known state.',
 }
 
 const RECOVERY_REASON_COPY: Record<
@@ -119,17 +119,17 @@ const RECOVERY_REASON_COPY: Record<
   string
 > = {
   transient_disconnect:
-    'The control channel dropped briefly and BrowserOS is retrying it.',
+    'The control channel dropped briefly and crewm8 is retrying it.',
   signature_expired:
     'The gateway rejected the signed device handshake because its clock drifted.',
   pairing_required:
-    'The gateway asked BrowserOS to approve its local device identity again.',
+    'The gateway asked crewm8 to approve its local device identity again.',
   token_mismatch:
-    'BrowserOS had to reload the gateway token before reconnecting.',
+    'crewm8 had to reload the gateway token before reconnecting.',
   container_not_ready:
     'The OpenClaw gateway process is not ready yet, so control-plane recovery cannot start.',
   unknown:
-    'BrowserOS hit an unexpected gateway error and could not classify it cleanly.',
+    'crewm8 hit an unexpected gateway error and could not classify it cleanly.',
 }
 
 const StatusBadge: FC<{ status: OpenClawStatus['status'] }> = ({ status }) => {
@@ -231,7 +231,7 @@ const ProviderSelector: FC<ProviderSelectorProps> = ({
         </SelectContent>
       </Select>
       <p className="text-muted-foreground text-xs">
-        Uses your existing API key from BrowserOS settings. The key is passed to
+        Uses your existing API key from crewm8 settings. The key is passed to
         the container and never leaves your machine.
       </p>
     </div>
