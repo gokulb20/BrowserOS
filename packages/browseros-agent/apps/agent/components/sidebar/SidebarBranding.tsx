@@ -1,7 +1,6 @@
 import { ChevronDown, LogIn, LogOut, User } from 'lucide-react'
 import type { FC } from 'react'
 import { useNavigate } from 'react-router'
-import ProductLogo from '@/assets/product_logo.svg'
 import { ThemeToggle } from '@/components/elements/theme-toggle'
 import {
   DropdownMenu,
@@ -14,6 +13,7 @@ import {
 import { GetProfileByUserIdDocument } from '@/entrypoints/app/profile/graphql/profileDocument'
 import { useSessionInfo } from '@/lib/auth/sessionStorage'
 import { useGraphqlQuery } from '@/lib/graphql/useGraphqlQuery'
+import { BrowserOSIcon } from '@/lib/llm-providers/providerIcons'
 import { cn } from '@/lib/utils'
 import { useWorkspace } from '@/lib/workspace/use-workspace'
 
@@ -68,7 +68,7 @@ export const SidebarBranding: FC<SidebarBrandingProps> = ({
       </div>
     )
   ) : (
-    <img src={ProductLogo} alt="crewm8" className="size-8" />
+    <BrowserOSIcon size={32} className="shrink-0" />
   )
 
   return (
@@ -91,9 +91,7 @@ export const SidebarBranding: FC<SidebarBrandingProps> = ({
             >
               <div className="flex items-center gap-1">
                 <span className="truncate font-semibold">
-                  {isLoggedIn
-                    ? displayName
-                    : selectedFolder?.name || 'crewm8'}
+                  {isLoggedIn ? displayName : selectedFolder?.name || 'Crewm8'}
                 </span>
                 <ChevronDown className="size-3.5 shrink-0 text-muted-foreground" />
               </div>

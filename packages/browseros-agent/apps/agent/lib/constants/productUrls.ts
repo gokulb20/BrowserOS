@@ -1,56 +1,56 @@
 /**
  * @public
  */
-export const docsUrl = 'https://docs.browseros.com/'
+export const docsUrl = 'https://docs.crewm8.ai/'
 
 /**
  * @public
  */
-export const productWebUrl = 'https://browseros.com'
+export const productWebUrl = 'https://crewm8.ai'
 
 /**
  * @public
  */
-export const productRepositoryUrl = 'https://github.com/browseros-ai/BrowserOS'
+export const productRepositoryUrl = 'https://github.com/gokulb20/BrowserOS'
 
 /**
  * @public
  */
-export const githubOrgUrl = 'https://github.com/browseros-ai'
+export const githubOrgUrl = 'https://github.com/gokulb20'
 
 /**
  * @public
  */
-export const privacyPolicyUrl = 'https://browseros.com/privacy'
+export const privacyPolicyUrl = 'https://crewm8.ai/privacy'
 
 /**
  * @public
  */
 export const contributorsUrl =
-  'https://github.com/browseros-ai/BrowserOS/graphs/contributors'
+  'https://github.com/gokulb20/BrowserOS/graphs/contributors'
 
 /**
  * @public
  */
-export const discordUrl = 'https://discord.gg/browseros'
+export const discordUrl = 'https://crewm8.ai/discord'
 
 /**
  * @public
  */
-export const slackUrl = 'https://dub.sh/browserOS-slack'
+export const slackUrl = 'https://crewm8.ai/slack'
 
 /**
  * @public
  */
-export const productVideoUrl = 'https://youtu.be/J-lFhTP-7is'
+export const productVideoUrl = 'https://crewm8.ai'
 
 /**
  * @public
  */
-export const productRepositoryShortUrl = 'https://git.new/browseros'
+export const productRepositoryShortUrl = 'https://github.com/gokulb20/BrowserOS'
 
 /**
  * @public
  */
 export const scheduledTasksHelpUrl =
-  'https://docs.browseros.com/features/scheduled-tasks'
+  'https://docs.crewm8.ai/features/scheduled-tasks'

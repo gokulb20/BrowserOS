@@ -28,7 +28,7 @@ export const ShortcutsDialog = ({
             Keyboard Shortcuts
           </DialogTitle>
           <DialogDescription>
-            Use these shortcuts to navigate crewm8 faster
+            Use these shortcuts to navigate Crewm8 faster
           </DialogDescription>
         </DialogHeader>
 

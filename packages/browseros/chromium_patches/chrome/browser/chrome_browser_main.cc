@@ -14,7 +14,12 @@ index 92a45baf84050..ee66fa7b857a7 100644
    if (first_run::IsChromeFirstRun()) {
      if (!base::CommandLine::ForCurrentProcess()->HasSwitch(switches::kApp) &&
          !base::CommandLine::ForCurrentProcess()->HasSwitch(switches::kAppId)) {
-+      browser_creator_->AddFirstRunTabs({GURL("chrome://browseros-welcome")});
++      // Crewm8: rebrand/quieting — upstream-portable: no
++      // BrowserOS auto-opens chrome://browseros-welcome on first run.
++      // Crewm8 lands on a plain new tab instead so the browser feels
++      // like a regular Chromium; agent features are opt-in via the
++      // toolbar Assistant button. Re-enable if a proper first-run tour
++      // is needed.
        browser_creator_->AddFirstRunTabs(master_prefs_->new_tabs);
      }
    }

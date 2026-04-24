@@ -16,7 +16,10 @@ type ArgsConfig struct {
 }
 
 func BuildArgs(cfg ArgsConfig) []string {
-	binary := "/Applications/BrowserOS.app/Contents/MacOS/BrowserOS"
+	// Crewm8: app was renamed from BrowserOS.app → Crewm8.app on this machine.
+	// The MacOS binary inside is still named BrowserOS (matches the internal
+	// product name — don't rename to preserve upstream merge compatibility).
+	binary := "/Applications/Crewm8.app/Contents/MacOS/BrowserOS"
 
 	args := []string{binary}
 

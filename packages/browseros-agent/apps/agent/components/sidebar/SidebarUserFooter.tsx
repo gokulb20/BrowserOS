@@ -38,7 +38,7 @@ export const SidebarUserFooter: FC<SidebarUserFooterProps> = ({
 
   const aboutLink = (
     <a
-      href="https://docs.browseros.com/"
+      href="https://docs.crewm8.ai/"
       target="_blank"
       rel="noopener noreferrer"
       className="flex h-9 items-center gap-2 overflow-hidden whitespace-nowrap rounded-md px-3 font-medium text-sm transition-colors hover:bg-sidebar-accent hover:text-sidebar-accent-foreground"
@@ -50,7 +50,7 @@ export const SidebarUserFooter: FC<SidebarUserFooterProps> = ({
           expanded ? 'opacity-100' : 'opacity-0',
         )}
       >
-        About crewm8
+        About Crewm8
       </span>
     </a>
   )
@@ -90,7 +90,7 @@ export const SidebarUserFooter: FC<SidebarUserFooterProps> = ({
         ) : (
           <Tooltip>
             <TooltipTrigger asChild>{aboutLink}</TooltipTrigger>
-            <TooltipContent side="right">About crewm8</TooltipContent>
+            <TooltipContent side="right">About Crewm8</TooltipContent>
           </Tooltip>
         )}
       </div>

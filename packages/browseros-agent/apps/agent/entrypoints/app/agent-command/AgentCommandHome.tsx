@@ -25,7 +25,7 @@ function AgentCommandSetupState({
     <Card className="border-border/60 bg-card/85 shadow-sm">
       <CardContent className="flex flex-col items-center gap-4 p-6 text-center">
         <p className="max-w-xl text-muted-foreground text-sm">
-          Set up OpenClaw agents to turn your new tab into an agent command
+          Set up your agent now to turn your new tab into an agent command
           center.
         </p>
         <Button onClick={onOpenAgents} className="gap-2">
@@ -42,7 +42,7 @@ function EmptyAgentsState({ onOpenAgents }: { onOpenAgents: () => void }) {
     <Card className="border-border/60 bg-card/85 shadow-sm">
       <CardContent className="flex flex-col items-center gap-4 p-6 text-center">
         <p className="max-w-xl text-muted-foreground text-sm">
-          OpenClaw is running, but you do not have any agents yet.
+          Your agent is running, but you do not have any agents set up yet.
         </p>
         <Button variant="outline" onClick={onOpenAgents}>
           Create your first agent

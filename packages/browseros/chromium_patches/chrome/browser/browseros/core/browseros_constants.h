@@ -170,10 +170,14 @@ index 0000000000000..fdeee36f8cc70
 +  bool is_labelled;
 +};
 +
++// Crewm8: rebrand/quieting — upstream-portable: no
++// Bug Reporter (BrowserOS Feedback) removed from bundled list so it's not
++// installed on first run. Crewm8 ships only Assistant (agent) + Browser
++// Controller by default. Re-add if Crewm8 wants its own feedback channel.
 +inline constexpr BrowserOSExtensionInfo kBrowserOSExtensions[] = {
 +    {kAgentExtensionId, false, false},
-+    {kBugReporterExtensionId, true, false},
 +    {kControllerExtensionId, false, false},
++    // {kBugReporterExtensionId, true, false},  // Removed: Crewm8 doesn't ship BrowserOS Feedback
 +    // ublock origin gets installed from chrome web store
 +    // {kUBlockOriginExtensionId, false, false},
 +};
@@ -222,11 +226,11 @@ index 0000000000000..fdeee36f8cc70
 +  return ids;
 +}
 +
-+// Sentry crash reporting
-+// https://9a76046fcfbcfe69a3580f4d204579f1@o4510545525932032.ingest.us.sentry.io/4510938172620800
-+inline constexpr char kSentryMinidumpUrl[] =
-+    "https://o4510545525932032.ingest.us.sentry.io/api/4510938172620800/"
-+    "minidump/?sentry_key=9a76046fcfbcfe69a3580f4d204579f1";
++// Crewm8: rebrand/quieting — upstream-portable: no
++// Crash reporting endpoint. BrowserOS points at its own Sentry project;
++// Crewm8 stubs to empty so crashes upload nowhere by default. Populate
++// when Crewm8 crash-reporting infrastructure is stood up.
++inline constexpr char kSentryMinidumpUrl[] = "";
 +
 +}  // namespace browseros
 +

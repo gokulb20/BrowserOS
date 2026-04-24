@@ -33,9 +33,9 @@ const features: Feature[] = [
     tag: 'AI AGENT',
     title: 'Built-in AI Agent',
     description:
-      'Describe any task and watch crewm8 execute it—clicking, typing, and navigating for you.',
+      'Describe any task and watch Crewm8 execute it—clicking, typing, and navigating for you.',
     detailedDescription:
-      'The crewm8 Agent turns your words into browser actions. Describe what you need in plain English—fill out this form, extract data from that page, navigate through these steps—and the agent handles the rest. It clicks buttons, types text, navigates between pages, and completes multi-step browser tasks automatically. Everything runs locally on your machine with your own API keys, so your data stays private.',
+      'The Crewm8 Agent turns your words into browser actions. Describe what you need in plain English—fill out this form, extract data from that page, navigate through these steps—and the agent handles the rest. It clicks buttons, types text, navigates between pages, and completes multi-step browser tasks automatically. Everything runs locally on your machine with your own API keys, so your data stays private.',
     highlights: [
       'Multi-tab execution — run agents in multiple tabs simultaneously',
       'Smart navigation — automatically finds and interacts with page elements',
@@ -129,9 +129,7 @@ export const FeaturesPage: FC = () => {
                   )}
                 >
                   Why Switch to{' '}
-                  <span className="text-[var(--accent-orange)]">
-                    crewm8?
-                  </span>
+                  <span className="text-[var(--accent-orange)]">Crewm8?</span>
                 </h1>
                 <p
                   className={cn(
@@ -193,7 +191,7 @@ export const FeaturesPage: FC = () => {
             <LinkIcon className="h-6 w-6 text-[var(--accent-orange)]" />
             <h2 className="font-bold text-3xl">
               Join our community and help us improve{' '}
-              <span className="text-[var(--accent-orange)]">crewm8!</span>
+              <span className="text-[var(--accent-orange)]">Crewm8!</span>
             </h2>
           </div>
 

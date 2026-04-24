@@ -20,8 +20,14 @@ index 0000000000000..c191fb3963968
 +
 +void RegisterProfilePrefs(user_prefs::PrefRegistrySyncable* registry) {
 +  // Toolbar visibility prefs
-+  registry->RegisterBooleanPref(prefs::kShowLLMChat, true);
-+  registry->RegisterBooleanPref(prefs::kShowLLMHub, true);
++  // Crewm8: rebrand/quieting — upstream-portable: no
++  // Default flipped from true → false so fresh installs land with a
++  // quiet regular-browser toolbar. User can enable both in Settings →
++  // Toolbar. The extension's onInstalled hook also sets these to false
++  // as a belt-and-suspenders measure for installs that skip the
++  // Chromium-level default registration.
++  registry->RegisterBooleanPref(prefs::kShowLLMChat, false);
++  registry->RegisterBooleanPref(prefs::kShowLLMHub, false);
 +  registry->RegisterBooleanPref(prefs::kShowToolbarLabels, true);
 +
 +  // Vertical tabs pref

@@ -36,8 +36,8 @@ function parseErrorMessage(
   // fetch failure is always a local connection issue.
   if (message.includes('Failed to fetch') || message.includes('fetch failed')) {
     return {
-      text: 'Unable to connect to crewm8 agent. Follow below instructions.',
-      url: 'https://docs.browseros.com/troubleshooting/connection-issues',
+      text: 'Unable to connect to Crewm8 agent. Follow below instructions.',
+      url: 'https://docs.crewm8.ai/troubleshooting/connection-issues',
       isConnectionError: true,
     }
   }

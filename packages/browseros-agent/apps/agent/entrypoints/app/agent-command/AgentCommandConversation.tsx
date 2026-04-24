@@ -79,10 +79,10 @@ function getConversationStatusCopy(
 ): string {
   if (streaming) return 'Working on your request'
   if (status === 'running') return 'Ready for the next task'
-  if (status === 'starting') return 'Connecting to OpenClaw'
-  if (status === 'error') return 'OpenClaw needs attention'
-  if (status === 'stopped') return 'OpenClaw is offline'
-  return 'Open agent setup to continue'
+  if (status === 'starting') return 'Connecting to your agent'
+  if (status === 'error') return 'Set up your agent now'
+  if (status === 'stopped') return 'Set up your agent now'
+  return 'Set up your agent now'
 }
 
 export const AgentCommandConversation: FC = () => {

@@ -66,7 +66,7 @@ export const NewAclRuleDialog: FC<NewAclRuleDialogProps> = ({
           </div>
           <div className="flex flex-col gap-2">
             <Label htmlFor="intent">
-              What should crewm8 block?{' '}
+              What should Crewm8 block?{' '}
               <span className="text-destructive">*</span>
             </Label>
             <Input
@@ -76,7 +76,7 @@ export const NewAclRuleDialog: FC<NewAclRuleDialogProps> = ({
               onChange={(e) => setIntent(e.target.value)}
             />
             <p className="text-muted-foreground text-xs">
-              Use plain English. crewm8 will block matching actions on this
+              Use plain English. Crewm8 will block matching actions on this
               site.
             </p>
           </div>

@@ -62,7 +62,7 @@ export const AgentCardExpanded: FC<AgentCardProps> = ({
         <div className="min-w-0">
           <div className="truncate font-semibold text-sm">{agent.name}</div>
           <div className="truncate text-muted-foreground text-xs">
-            {agent.model ?? 'OpenClaw agent'}
+            {agent.model ?? 'Agent'}
           </div>
         </div>
       </div>
