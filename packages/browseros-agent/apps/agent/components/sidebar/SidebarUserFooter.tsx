@@ -50,7 +50,7 @@ export const SidebarUserFooter: FC<SidebarUserFooterProps> = ({
           expanded ? 'opacity-100' : 'opacity-0',
         )}
       >
-        About crewm8
+        About Crewm8
       </span>
     </a>
   )
@@ -90,7 +90,7 @@ export const SidebarUserFooter: FC<SidebarUserFooterProps> = ({
         ) : (
           <Tooltip>
             <TooltipTrigger asChild>{aboutLink}</TooltipTrigger>
-            <TooltipContent side="right">About crewm8</TooltipContent>
+            <TooltipContent side="right">About Crewm8</TooltipContent>
           </Tooltip>
         )}
       </div>

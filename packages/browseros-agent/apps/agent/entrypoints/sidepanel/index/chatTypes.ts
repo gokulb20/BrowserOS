@@ -33,7 +33,7 @@ export const AGENT_SUGGESTIONS: Suggestion[] = [
     icon: '❤️',
   },
   {
-    display: 'Support crewm8 on Github',
+    display: 'Support Crewm8 on Github',
     prompt:
       'Go to http://git.new/browseros in current tab and star the repository',
     icon: '⭐',
