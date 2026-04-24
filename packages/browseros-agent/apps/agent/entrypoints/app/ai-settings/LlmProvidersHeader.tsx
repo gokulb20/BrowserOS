@@ -1,6 +1,5 @@
 import { Plus } from 'lucide-react'
 import type { FC } from 'react'
-import ProductLogoSvg from '@/assets/product_logo.svg'
 import { Button } from '@/components/ui/button'
 import {
   Select,
@@ -9,6 +8,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select'
+import { BrowserOSIcon } from '@/lib/llm-providers/providerIcons'
 import type { LlmProviderConfig } from '@/lib/llm-providers/types'
 
 interface LlmProvidersHeaderProps {
@@ -30,8 +30,8 @@ export const LlmProvidersHeader: FC<LlmProvidersHeaderProps> = ({
   return (
     <div className="rounded-xl border border-border bg-card p-6 shadow-sm transition-all hover:shadow-md">
       <div className="flex items-start gap-4">
-        <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-[var(--accent-orange)]/10">
-          <img src={ProductLogoSvg} alt="crewm8" className="h-8 w-8" />
+        <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-foreground/5">
+          <BrowserOSIcon size={32} />
         </div>
         <div className="flex-1">
           <h2 className="mb-1 font-semibold text-xl">LLM Providers</h2>
