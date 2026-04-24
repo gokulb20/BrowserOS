@@ -1,7 +1,7 @@
 import type { FC } from 'react'
-import ProductLogoSvg from '@/assets/product_logo.svg'
 import { Button } from '@/components/ui/button'
 import { docsUrl, githubOrgUrl } from '@/lib/constants/productUrls'
+import { BrowserOSIcon } from '@/lib/llm-providers/providerIcons'
 
 interface OnboardingHeaderProps {
   isMounted: boolean
@@ -14,13 +14,10 @@ export const OnboardingHeader: FC<OnboardingHeaderProps> = ({ isMounted }) => {
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
         <div className="flex items-center gap-3">
-          {/* Floating animation to logo */}
-          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-accent-orange">
-            <img src={ProductLogoSvg} alt="crewm8" className="h-6 w-6" />
+          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-foreground text-background">
+            <BrowserOSIcon size={24} />
           </div>
-          <span className="font-semibold text-accent-orange text-lg">
-            crewm8
-          </span>
+          <span className="font-semibold text-foreground text-lg">Crewm8</span>
         </div>
         <nav className="hidden items-center gap-1 md:flex">
           <Button
