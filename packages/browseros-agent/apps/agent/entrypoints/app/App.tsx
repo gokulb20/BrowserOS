@@ -69,7 +69,12 @@ const OptionsRedirect: FC = () => {
 export const App: FC = () => {
   const surveyParams = getSurveyParams()
   const { supports } = useCapabilities()
-  const alphaEnabled = supports(Feature.ALPHA_FEATURES_SUPPORT)
+  // Crewm8: always use the simplified (non-alpha) home — regular-browser feel.
+  // Dev mode forces all capability gates to true, which lands users on the
+  // agent-first AgentCommandHome. Pin the home index to the simple NewTab.
+  const alphaEnabled = false
+  const _capabilityAlphaEnabled = supports(Feature.ALPHA_FEATURES_SUPPORT)
+  void _capabilityAlphaEnabled
 
   return (
     <HashRouter>
