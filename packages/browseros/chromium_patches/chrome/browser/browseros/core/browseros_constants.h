@@ -170,10 +170,14 @@ index 0000000000000..fdeee36f8cc70
 +  bool is_labelled;
 +};
 +
++// Crewm8: rebrand/quieting — upstream-portable: no
++// Bug Reporter (BrowserOS Feedback) removed from bundled list so it's not
++// installed on first run. Crewm8 ships only Assistant (agent) + Browser
++// Controller by default. Re-add if Crewm8 wants its own feedback channel.
 +inline constexpr BrowserOSExtensionInfo kBrowserOSExtensions[] = {
 +    {kAgentExtensionId, false, false},
-+    {kBugReporterExtensionId, true, false},
 +    {kControllerExtensionId, false, false},
++    // {kBugReporterExtensionId, true, false},  // Removed: Crewm8 doesn't ship BrowserOS Feedback
 +    // ublock origin gets installed from chrome web store
 +    // {kUBlockOriginExtensionId, false, false},
 +};
