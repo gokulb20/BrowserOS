@@ -4,7 +4,7 @@ import WordmarkSvg from '@/assets/crewm8-wordmark.svg'
 
 export const NewTabBranding: FC = () => {
   return (
-    <div className="space-y-3 text-center">
+    <div className="text-center">
       <motion.div
         layoutId="new-tab-branding"
         transition={{ type: 'keyframes', damping: 20, stiffness: 300 }}
@@ -26,7 +26,6 @@ export const NewTabBranding: FC = () => {
           aria-label="Crewm8"
         />
       </motion.div>
-      <p className="text-muted-foreground text-sm">Welcome to Crewm8</p>
     </div>
   )
 }
