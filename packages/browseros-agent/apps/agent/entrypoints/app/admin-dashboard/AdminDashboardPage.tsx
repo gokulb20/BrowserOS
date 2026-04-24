@@ -137,8 +137,7 @@ export const AdminDashboardPage: FC = () => {
             </div>
             <h3 className="mb-1 font-medium text-lg">No agent runs yet</h3>
             <p className="mx-auto max-w-sm text-muted-foreground text-sm">
-              Run a task in crewm8 and the execution history will appear
-              here.
+              Run a task in Crewm8 and the execution history will appear here.
             </p>
           </div>
         ) : (

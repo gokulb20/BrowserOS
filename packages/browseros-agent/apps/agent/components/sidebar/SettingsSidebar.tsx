@@ -62,7 +62,7 @@ const primarySettingsSections: NavSection[] = [
   {
     label: 'Provider Settings',
     items: [
-      { name: 'crewm8 AI', to: '/settings/ai', icon: Bot },
+      { name: 'Crewm8 AI', to: '/settings/ai', icon: Bot },
       {
         name: 'Chat & Council Provider',
         to: '/settings/chat',
@@ -75,7 +75,7 @@ const primarySettingsSections: NavSection[] = [
     label: 'Other',
     items: [
       {
-        name: 'Customize crewm8',
+        name: 'Customize Crewm8',
         to: '/settings/customization',
         icon: Palette,
         feature: Feature.CUSTOMIZATION_SUPPORT,
@@ -86,7 +86,7 @@ const primarySettingsSections: NavSection[] = [
         icon: ShieldCheck,
         feature: Feature.ALPHA_FEATURES_SUPPORT,
       },
-      { name: 'crewm8 as MCP', to: '/settings/mcp', icon: Server },
+      { name: 'Crewm8 as MCP', to: '/settings/mcp', icon: Server },
       {
         name: 'ACL Rules',
         to: '/settings/acl',

@@ -37,7 +37,7 @@ export const Onboarding: FC = () => {
             >
               Welcome to{' '}
               <span className="inline-block animate-glow-once text-accent-orange">
-                crewm8
+                Crewm8
               </span>
             </h1>
 
@@ -83,7 +83,7 @@ export const Onboarding: FC = () => {
       <footer className="border-border/40 border-t py-8">
         <div className="mx-auto max-w-7xl px-6">
           <p className="text-center text-muted-foreground text-sm">
-            crewm8 © {getCurrentYear()} - The Open-Source Agentic Browser
+            Crewm8 © {getCurrentYear()} - The Open-Source Agentic Browser
           </p>
         </div>
       </footer>

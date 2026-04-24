@@ -80,7 +80,7 @@ export const ProviderCard: FC<ProviderCardProps> = ({
         <p className="truncate text-muted-foreground text-sm">
           {isBuiltIn ? (
             <>
-              crewm8-hosted model with strict rate limits.{' '}
+              Crewm8-hosted model with strict rate limits.{' '}
               <a
                 href="https://docs.crewm8.ai/features/bring-your-own-llm"
                 target="_blank"
