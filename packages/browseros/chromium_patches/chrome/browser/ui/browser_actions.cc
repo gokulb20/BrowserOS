@@ -124,8 +124,8 @@ index 19d0181ac8285..5bc3edd1fff8e 100644
 +              },
 +              bwi))
 +          .SetActionId(kActionBrowserOSAgent)
-+          .SetText(u"Assistant")
-+          .SetTooltipText(u"Ask Crewm8")
++          .SetText(u"Crewm8")
++          .SetTooltipText(u"Crewm8")
 +          .SetImage(ui::ImageModel::FromResourceId(IDR_PRODUCT_LOGO_16))
 +          .SetProperty(actions::kActionItemPinnableKey,
 +                       std::underlying_type_t<actions::ActionPinnableState>(

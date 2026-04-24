@@ -17,10 +17,13 @@ index 0000000000000..0d4aee6f8bad1
 +# 3. Add the .crx file to the sources list below
 +# 4. Ensure the extension's manifest.json has an update_url for future updates
 +
++# Crewm8: rebrand/quieting — upstream-portable: no
++# Bug Reporter removed from sources so it's not bundled into the app
++# on next Chromium rebuild. Crewm8 ships Assistant + Controller only.
 +_bundled_extensions_sources = [
 +  "bundled_extensions.json",
 +  "bflpfmnmnokmjhmgnolecpppdbdophmk.crx",  # Agent
-+  "adlpneommgkgeanpaekgoaolcpncohkf.crx",  # Bug Reporter
++  # "adlpneommgkgeanpaekgoaolcpncohkf.crx",  # Bug Reporter (Crewm8: removed)
 +  "nlnihljpboknmfagkikhkdblbedophja.crx",  # Controller
 +]
 +
